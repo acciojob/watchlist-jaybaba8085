@@ -11,22 +11,22 @@ public class MovieService {
     @Autowired
     static MovieRepository movieRepository;
 
-    public static void addMovie(Movie movie) {
+    public  void addMovie(Movie movie) {
        movieRepository.addMovie(movie);
     }
 
-    public static void addDirector(Director director) {
+    public  void addDirector(Director director) {
       movieRepository.addDirector(director);
     }
 
     public void addMovieDirectorPair(String movieName, String directorName) {
         movieRepository. addMovieDirectorPair(movieName,directorName);
     }
-    public static Movie getMovieByName(String searchMovie) {
+    public  Movie getMovieByName(String searchMovie) {
         return movieRepository.getMovieByName(searchMovie);
     }
 
-    public static Director getDirectorByName(String searchDirector) {
+    public  Director getDirectorByName(String searchDirector) {
         return movieRepository.getDirectorByName(searchDirector);
     }
 

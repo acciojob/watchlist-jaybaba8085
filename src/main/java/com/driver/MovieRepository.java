@@ -56,7 +56,7 @@ public class MovieRepository {
     public void deleteDirectorByName(String name) {
         directors.remove(name);
     }
-    public void deleteAllDirectors() {
+    public  void deleteAllDirectors() {
         directors.clear();
     }
 }
