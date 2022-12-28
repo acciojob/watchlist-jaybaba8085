@@ -13,8 +13,9 @@ public class MovieRepository {
      HashMap<String, Director> directors = new HashMap<>();
      HashMap<Movie,Director>pair= new HashMap<>();
     public void addMovie(Movie movie) { movies.put(movie.getName(), movie);  }
-    public void addDirector(Director director) {
+    public Director addDirector(Director director) {
         directors.put(director.getName(), director);
+        return director;
     }
     public void addMovieDirectorPair(String movieName, String directorName)
     {
@@ -27,9 +28,7 @@ public class MovieRepository {
         return movies.get(name);
     }
     public Director getDirectorByName(String name) {
-        Director d=new Director();
-        if(directors.containsKey(name))
-            d=directors.get(name);
+        Director d= directors.get(name);
         return  d;
     }
 
