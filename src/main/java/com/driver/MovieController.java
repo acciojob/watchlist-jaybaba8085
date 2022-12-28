@@ -28,12 +28,24 @@ public ResponseEntity<String> addDirector(@RequestBody() Director director)
     return new ResponseEntity<>("Director added successfully", HttpStatus.CREATED);
 }
 
+
+
+
+
+
+
+
 //3
 @PutMapping("/movies/add-movie-director-pair")
 public ResponseEntity<String> addMovieDirectorPair(@RequestParam String movieName, @RequestParam String directorName) {
     movieService.addMovieDirectorPair(movieName, directorName);
     return new ResponseEntity<>("Movie-director pair added successfully", HttpStatus.ACCEPTED);
 }
+
+
+
+
+
 
 //4
 @GetMapping("/movies/get-movie-by-name/{name}")
@@ -46,14 +58,6 @@ public ResponseEntity<Movie> getMovieByName(@PathVariable String name) {
         return new ResponseEntity<>(movie, HttpStatus.OK);
     }
 }
-
-
-
-
-
-
-
-
 
 
 //5
