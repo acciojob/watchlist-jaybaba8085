@@ -48,13 +48,13 @@ public ResponseEntity<Movie> getMovieByName(@PathVariable String name) {
 }
 //5
 @GetMapping("/movies/get-director-by-name/{name}")
-public ResponseEntity<Director> getDirectorByName(@PathVariable String name) {
+public ResponseEntity<String> getDirectorByName(@PathVariable String name) {
     Director director = movieService.getDirectorByName(name);
-//    if (director == null) {
-//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    } else {
-        return new ResponseEntity<>(director, HttpStatus.OK);
-  //  }
+    if (director == null) {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    } else {
+        return new ResponseEntity<>(director.toString(), HttpStatus.OK);
+    }
 }
 
 //6
