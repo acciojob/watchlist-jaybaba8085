@@ -8,6 +8,20 @@ import java.util.List;
 @Service
 public class MovieService {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Autowired
     static MovieRepository movieRepository;
 

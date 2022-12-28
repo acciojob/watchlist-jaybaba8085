@@ -9,6 +9,21 @@ import java.util.List;
 @Repository
 public class MovieRepository {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      HashMap<String, Movie> movies = new HashMap<>();
      HashMap<String, Director> directors = new HashMap<>();
      HashMap<Movie,Director>pair= new HashMap<>();
