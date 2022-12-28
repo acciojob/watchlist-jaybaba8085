@@ -11,7 +11,7 @@ public class MovieRepository {
 
      HashMap<String, Movie> movies = new HashMap<>();
      HashMap<String, Director> directors = new HashMap<>();
-     HashMap<Director,Movie>pair= new HashMap<>();
+     HashMap<Movie,Director>pair= new HashMap<>();
     public void addMovie(Movie movie) {
         movies.put(movie.getName(), movie);
     }
@@ -23,7 +23,7 @@ public class MovieRepository {
     {
         Movie movie = movies.get(movieName);
         Director director = directors.get(directorName);
-        pair.put(director,movie);
+        pair.put(movie,director);
     }
     public Movie getMovieByName(String name) {
         return movies.get(name);
@@ -35,9 +35,10 @@ public class MovieRepository {
 
     public List<String> getMoviesByDirectorName(String director) {
         List<String> moviesByDirector = new ArrayList<>();
-        for (Movie movie : pair.values())
+        for (Movie d:pair.keySet())
             {
-                moviesByDirector.add(movie.getName());
+                if(pair.get(d).getName().equals(director))
+                moviesByDirector.add((d).getName());
             }
         return moviesByDirector;
     }
