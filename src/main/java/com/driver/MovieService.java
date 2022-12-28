@@ -11,9 +11,7 @@ public class MovieService {
     @Autowired
     public MovieRepository movieRepository;
 
-    public  void addMovie(Movie movie) {
-        movieRepository.addMovie(movie);
-    }
+    public  void addMovie(Movie movie) {movieRepository.addMovie(movie);}
 
     public  void addDirector(Director director) {
       movieRepository.addDirector(director);
@@ -36,9 +34,9 @@ public class MovieService {
     public List<String> findAllMovies() {
         return movieRepository.findAllMovies();
     }
-    public  void deleteDirectorByName(Director searchDirector) {
+    public  void deleteDirectorByName(String searchDirector) {
 
-        movieRepository.deleteDirectorByName(searchDirector.getName());
+        movieRepository.deleteDirectorByName(searchDirector);
     }
 
     public void deleteAllDirectors() {
