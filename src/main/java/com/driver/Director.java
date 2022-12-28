@@ -1,12 +1,14 @@
 package com.driver;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Director {
     public String name;
     public  int numberOfMovies;
     public  double imdbRating;
-   // Director(){}
-
-  public   Director(String name,int numberOfMovies, double imdbRating)
+   Director(){}
+ public   Director(String name,int numberOfMovies, double imdbRating)
     {
         this.name=name;
         this.numberOfMovies = numberOfMovies;

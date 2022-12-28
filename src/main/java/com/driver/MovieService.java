@@ -8,29 +8,15 @@ import java.util.List;
 @Service
 public class MovieService {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Autowired
-    static MovieRepository movieRepository;
+    public MovieRepository movieRepository;
 
     public  void addMovie(Movie movie) {
-       movieRepository.addMovie(movie);
+        movieRepository.addMovie(movie);
     }
 
-    public  Director addDirector(Director director) {
-      return movieRepository.addDirector(director);
+    public  void addDirector(Director director) {
+      movieRepository.addDirector(director);
     }
 
     public void addMovieDirectorPair(String movieName, String directorName) {
@@ -50,12 +36,12 @@ public class MovieService {
     public List<String> findAllMovies() {
         return movieRepository.findAllMovies();
     }
-    public static void deleteDirectorByName(Director searchDirector) {
+    public  void deleteDirectorByName(Director searchDirector) {
 
         movieRepository.deleteDirectorByName(searchDirector.getName());
     }
 
-    public static void deleteAllDirectors() {
+    public void deleteAllDirectors() {
         movieRepository.deleteAllDirectors();
     }
 

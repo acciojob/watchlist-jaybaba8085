@@ -9,28 +9,15 @@ import java.util.List;
 @Repository
 public class MovieRepository {
 
+   public   HashMap<String, Movie> movies = new HashMap<>();
+   public    HashMap<String, Director> directors = new HashMap<>();
+ public     HashMap<Movie,Director>pair= new HashMap<>();
+    public void addMovie(Movie movie) {
+        movies.put(movie.getName(),movie);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     HashMap<String, Movie> movies = new HashMap<>();
-     HashMap<String, Director> directors = new HashMap<>();
-     HashMap<Movie,Director>pair= new HashMap<>();
-    public void addMovie(Movie movie) { movies.put(movie.getName(), movie);  }
-    public Director addDirector(Director director) {
+    public void addDirector(Director director) {
         directors.put(director.getName(), director);
-        return director;
     }
     public void addMovieDirectorPair(String movieName, String directorName)
     {
@@ -42,8 +29,11 @@ public class MovieRepository {
     public Movie getMovieByName(String name) {
         return movies.get(name);
     }
+
     public Director getDirectorByName(String name) {
-        Director d= directors.get(name);
+        Director d=new Director();
+        if(directors.containsKey(name))
+            d=directors.get(name);
         return  d;
     }
 
