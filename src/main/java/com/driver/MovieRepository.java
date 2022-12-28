@@ -29,7 +29,7 @@ public class MovieRepository {
         return movies.get(name);
     }
 
-    public Director getDirectorByName(String name) {
+    public String getDirectorByName(String name) {
         return directors.get(name);
     }
 
