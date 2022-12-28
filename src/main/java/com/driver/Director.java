@@ -1,13 +1,23 @@
 package com.driver;
 
-public class Director extends Movie {
+public class Director {
+    public String name;
     public  int numberOfMovies;
     public  double imdbRating;
     Director(){}
 
-    public Director(int numberOfMovies, double imdbRating) {
+    public Director(String name,int numberOfMovies, double imdbRating) {
+        this.name=name;
         this.numberOfMovies = numberOfMovies;
         this.imdbRating = imdbRating;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getNumberOfMovies() {
