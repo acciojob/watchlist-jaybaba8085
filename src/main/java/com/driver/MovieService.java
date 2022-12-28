@@ -26,7 +26,7 @@ public class MovieService {
         return movieRepository.getMovieByName(searchMovie);
     }
 
-    public static String getDirectorByName(String searchDirector) {
+    public static Director getDirectorByName(String searchDirector) {
         return movieRepository.getDirectorByName(searchDirector);
     }
 
