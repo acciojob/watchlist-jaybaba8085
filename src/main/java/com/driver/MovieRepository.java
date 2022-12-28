@@ -12,10 +12,7 @@ public class MovieRepository {
      HashMap<String, Movie> movies = new HashMap<>();
      HashMap<String, Director> directors = new HashMap<>();
      HashMap<Movie,Director>pair= new HashMap<>();
-    public void addMovie(Movie movie) {
-        movies.put(movie.getName(), movie);
-    }
-
+    public void addMovie(Movie movie) { movies.put(movie.getName(), movie);  }
     public void addDirector(Director director) {
         directors.put(director.getName(), director);
     }
@@ -23,12 +20,12 @@ public class MovieRepository {
     {
         Movie movie = movies.get(movieName);
         Director director = directors.get(directorName);
+
         pair.put(movie,director);
     }
     public Movie getMovieByName(String name) {
         return movies.get(name);
     }
-
     public Director getDirectorByName(String name) {
         Director d=new Director();
         if(directors.containsKey(name))
