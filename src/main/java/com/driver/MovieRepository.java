@@ -30,8 +30,10 @@ public class MovieRepository {
     }
 
     public Director getDirectorByName(String name) {
-        Director director = directors.get(name);
-        return director;
+        Director d=new Director();
+        if(directors.containsKey(name))
+            d=directors.get(name);
+        return  d;
     }
 
     public List<String> getMoviesByDirectorName(String director) {
