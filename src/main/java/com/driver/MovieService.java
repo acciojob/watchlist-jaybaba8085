@@ -30,10 +30,10 @@ public class MovieService {
         return movieRepository.getDirectorByName(searchDirector);
     }
 
-    public List<Movie> getMoviesByDirectorName(String director) {
-        return (List<Movie>) movieRepository.getMoviesByDirectorName(director);
+    public List<String> getMoviesByDirectorName(String director) {
+        return (List<String>) movieRepository.getMoviesByDirectorName(director);
     }
-    public List<Movie> findAllMovies() {
+    public List<String> findAllMovies() {
         return movieRepository.findAllMovies();
     }
     public static void deleteDirectorByName(Director searchDirector) {
@@ -41,7 +41,7 @@ public class MovieService {
         movieRepository.deleteDirectorByName(searchDirector.getName());
     }
 
-    public static void deleteAllDirectors(Director searchDirector) {
+    public static void deleteAllDirectors() {
         movieRepository.deleteAllDirectors();
     }
 

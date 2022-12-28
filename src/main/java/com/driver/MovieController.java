@@ -85,8 +85,8 @@ public ResponseEntity<Director> getDirectorByName(@PathVariable String name) {
 //    Controller Name - getMoviesByDirectorName
 
 @GetMapping("/movies/get-movies-by-director-name/{director}")
-public ResponseEntity<List<Movie>> getMoviesByDirectorName(@PathVariable String director) {
-    List<Movie> movies = (List<Movie>) movieService.getMoviesByDirectorName(director);
+public ResponseEntity<List<String>> getMoviesByDirectorName(@PathVariable String director) {
+    List<String> movies = (List<String>) movieService.getMoviesByDirectorName(director);
     if (movies.isEmpty()) {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     } else {
@@ -96,8 +96,8 @@ public ResponseEntity<List<Movie>> getMoviesByDirectorName(@PathVariable String 
 
 
     @GetMapping("/movies/get-all-movies")
-    public ResponseEntity<List<Movie>> findAllMovies() {
-        List<Movie> movies = movieService.findAllMovies();
+    public ResponseEntity<List<String>> findAllMovies() {
+        List<String> movies = movieService.findAllMovies();
         if (movies.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
@@ -121,9 +121,9 @@ public ResponseEntity<String> deleteDirectorByName(@RequestParam("id")Director s
 //    Controller Name - deleteAllDirectors
 //            (Note that there can be some movies on your watchlist that aren’t mapped to any of the director. Make sure you do not remove them.)
 @DeleteMapping("/movies/delete-director-by-name")
-public ResponseEntity<String> deleteAllDirectors(@RequestParam("id")Director searchDirector)
+public ResponseEntity<String> deleteAllDirectors()
 {
-    MovieService.deleteAllDirectors(searchDirector);
+    MovieService.deleteAllDirectors();
 
     return new ResponseEntity<>(  "The all Director has been deleted" , HttpStatus.OK);
 }
