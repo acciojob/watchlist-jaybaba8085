@@ -11,7 +11,8 @@ public class MovieRepository {
 
        HashMap<String, Movie> movies = new HashMap<>();
        HashMap<String, Director> directors = new HashMap<>();
-       HashMap<Movie,Director>pair= new HashMap<>();
+     //  HashMap<Movie,Director>pair= new HashMap<>();
+  public   HashMap<String,List<String>>pair=new HashMap<>();
     public void addMovie(Movie movie) {   movies.put(movie.getName(),movie);   }
     public void addDirector(Director director) {
         String name=director.name;
@@ -19,10 +20,17 @@ public class MovieRepository {
     }
     public void addMovieDirectorPair(String movieName, String directorName)
     {
-//        Movie movie = movies.get(movieName);
-//        Director director = directors.get(directorName);
-        //pair.put(movie,director);
-        pair.put(movies.get(movieName),directors.get(directorName));
+        //Movie movie = movies.get(movieName);
+       // Director director = directors.get(directorName);
+       if(pair.containsKey(directorName))
+       {
+           pair.get(directorName).add(movieName);
+       }
+       else{
+           List<String> ls= new ArrayList<>();
+           ls.add(movieName);
+           pair.put(directorName,ls);
+       }
     }
     public Movie getMovieByName(String name) {
         return movies.get(name);
@@ -34,17 +42,17 @@ public class MovieRepository {
             d=directors.get(name);
         return  d;
     }
-
-    public List<String> getMoviesByDirectorName(String director) {
-        List<String> moviesByDirector = new ArrayList<>();
-
-        for (Movie d:pair.keySet())
-            {
-                if( pair.get(d)!=null && pair.get(d).name==director)
-                moviesByDirector.add(d.name);
-            }
-
-        return moviesByDirector;
+//6
+    public List<String> getMoviesByDirectorName(String directorName) {
+         List<String>ls= new ArrayList<>();
+         if(pair.containsKey(directorName))
+         {
+             for(String s : pair.get(directorName))
+             {
+                 ls.add(s);
+             }
+         }
+       return ls ;
     }
     public List<String> findAllMovies() {
         List<String>ls= new ArrayList<>();
@@ -54,14 +62,13 @@ public class MovieRepository {
         }
         return new ArrayList<>(ls);
     }
-    public void deleteDirectorByName(String name) {
-        for (Movie d:pair.keySet())
-        {
-            if( pair.get(d)!=null && pair.get(d).getName()==name)
-                pair.remove(d);
-        }
-        directors.remove(name);
+    //8
+    public void deleteDirectorByName(String director) {
+
+         // directors.remove(director);
+          pair.remove(director);
     }
+    //9
     public  void deleteAllDirectors() {
         directors.clear();
     }

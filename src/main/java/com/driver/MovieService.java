@@ -28,17 +28,21 @@ public class MovieService {
         return movieRepository.getDirectorByName(searchDirector);
     }
 
+    //6
     public List<String> getMoviesByDirectorName(String director) {
         return (List<String>) movieRepository.getMoviesByDirectorName(director);
     }
+    //7
     public List<String> findAllMovies() {
         return movieRepository.findAllMovies();
     }
+
+    //8
     public  void deleteDirectorByName(String searchDirector) {
 
         movieRepository.deleteDirectorByName(searchDirector);
     }
-
+//9
     public void deleteAllDirectors() {
         movieRepository.deleteAllDirectors();
     }
