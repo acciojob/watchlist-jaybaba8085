@@ -11,17 +11,21 @@ public class MovieRepository {
 
        HashMap<String, Movie> movies = new HashMap<>();
        HashMap<String, Director> directors = new HashMap<>();
-     //  HashMap<Movie,Director>pair= new HashMap<>();
-  public   HashMap<String,List<String>>pair=new HashMap<>();
-    public void addMovie(Movie movie) {   movies.put(movie.getName(),movie);   }
+       HashMap<String,List<String>>pair=new HashMap<>();
+
+
+    public void addMovie(Movie movie) {
+        String name=movie.getName();
+        movies.put(name,movie);
+    }
+
     public void addDirector(Director director) {
-        String name=director.name;
+        String name=director.getName();
         directors.put(name, director); //director.getName()
+
     }
     public void addMovieDirectorPair(String movieName, String directorName)
     {
-        //Movie movie = movies.get(movieName);
-       // Director director = directors.get(directorName);
        if(pair.containsKey(directorName))
        {
            pair.get(directorName).add(movieName);
@@ -42,18 +46,7 @@ public class MovieRepository {
             d=directors.get(name);
         return  d;
     }
-//6
-    public List<String> getMoviesByDirectorName(String directorName) {
-         List<String>ls= new ArrayList<>();
-         if(pair.containsKey(directorName))
-         {
-             for(String s : pair.get(directorName))
-             {
-                 ls.add(s);
-             }
-         }
-       return ls ;
-    }
+
     public List<String> findAllMovies() {
         List<String>ls= new ArrayList<>();
         for(String name:movies.keySet())
@@ -62,11 +55,29 @@ public class MovieRepository {
         }
         return new ArrayList<>(ls);
     }
-    //8
-    public void deleteDirectorByName(String director) {
+    //6
+    public List<String> getMoviesByDirectorName(String directorName)
+    {
+        List<String>ls= new ArrayList<>();
+        if(pair.containsKey(directorName)) return pair.get(directorName);
+         return null;
 
-         // directors.remove(director);
-          pair.remove(director);
+    }
+    //8
+    public String deleteDirectorByName(String directorName) {
+
+        if(directors.containsKey(directorName)){
+            if(pair.containsKey(directorName)){
+                List<String>moviess=pair.get(directorName);
+                        for(String moviee:moviess)
+                        {if(movies.containsKey(moviee))
+                            {movies.remove(moviee);}
+                        }
+                directors.remove(directorName);
+                pair.remove(directorName);
+                return "Removed SuccessFully";
+            }
+        }return "Director DNE!!";
     }
     //9
     public  void deleteAllDirectors() {
