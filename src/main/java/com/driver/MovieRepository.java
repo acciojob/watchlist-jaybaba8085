@@ -24,27 +24,35 @@ public class MovieRepository {
         directors.put(name, director); //director.getName()
 
     }
-    public void addMovieDirectorPair(String movieName, String directorName)
-    {
-       if(pair.containsKey(directorName))
-       {
-           pair.get(directorName).add(movieName);
-       }
-       else{
-           List<String> ls= new ArrayList<>();
-           ls.add(movieName);
-           pair.put(directorName,ls);
-       }
-    }
-    public Movie getMovieByName(String name) {
-        return movies.get(name);
+    public void addMovieDirectorPair(String movieName, String directorName) {
+        if (movies.containsKey(movieName) && directors.containsKey(directorName)) {
+            if (pair.containsKey(directorName)) {
+                List<String> l=pair.get(directorName);
+                l.add(movieName);
+                pair.put(directorName,l);
+            } else {
+                List<String> ls = new ArrayList<>();
+                ls.add(movieName);
+                pair.put(directorName, ls);
+            }
+        }
     }
 
+
+    public Movie getMovieByName(String name)
+    {
+        if(movies.containsKey(name))
+        return movies.get(name);
+        return null;
+    }
+
+
+
     public Director getDirectorByName(String name) {
-        Director d=new Director();
+
         if(directors.containsKey(name))
-            d=directors.get(name);
-        return  d;
+            return directors.get(name);
+        return  null;
     }
 
     public List<String> findAllMovies() {
@@ -58,7 +66,6 @@ public class MovieRepository {
     //6
     public List<String> getMoviesByDirectorName(String directorName)
     {
-        List<String>ls= new ArrayList<>();
         if(pair.containsKey(directorName)) return pair.get(directorName);
          return null;
 
@@ -70,17 +77,35 @@ public class MovieRepository {
             if(pair.containsKey(directorName)){
                 List<String>moviess=pair.get(directorName);
                         for(String moviee:moviess)
-                        {if(movies.containsKey(moviee))
-                            {movies.remove(moviee);}
+                        {
+                            if(movies.containsKey(moviee))
+                            {
+                                movies.remove(moviee);
+                            }
                         }
                 directors.remove(directorName);
                 pair.remove(directorName);
                 return "Removed SuccessFully";
             }
-        }return "Director DNE!!";
+        }
+        return "Director DNE!!";
     }
     //9
     public  void deleteAllDirectors() {
+        for(String dirName:directors.keySet()){
+            if(pair.containsKey(dirName)){
+                List<String> moviess=pair.get(dirName);
+                for(String moviee:moviess){
+                    if(movies.containsKey(moviee)){
+                        movies.remove(moviee);
+                    }
+                }
+
+            }
+            pair.clear();
+            directors.clear();
+        }
+        pair.clear();
         directors.clear();
     }
 }
